@@ -10,6 +10,10 @@ class FormRow extends Company {
   public Index = 0;
   // Value to store the toggle bit for the Additional Information Div
   public HideShowToggle = false;
+
+  constructor() {
+    super();
+  }
 }
 
 @Component({
@@ -164,6 +168,17 @@ export class AppComponent implements OnInit {
 
     return isDirty;
   }
+
+  toggleContent(event, element: FormRow) {
+    console.log("In toggleContent", event, element);
+
+    element.HideShowToggle = !element.HideShowToggle;
+    if (element.HideShowToggle) {
+      // Perform any lazy operations
+      // Fetch addtl data, etc....
+    }
+  }
+
 
 
 }

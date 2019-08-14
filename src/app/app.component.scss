@@ -15,27 +15,36 @@ button {
 }
 
 td.index {
-  width: 10px;
+  width: 5%;
   text-align: center;
 }
 
 td.name {
-  width: 100px;
+  width: 27%;
 }
 
 td.gender {
-  width: 20px;
+  width: 15%;
 }
 
 td.company {
-  width: 200px;
+  width: 50%;
 }
 
-.dirty {
+tr.dirty {
   background-color: lightsteelblue;
 }
 
-.clean {
+tr.clean {
   background-color: transparent;
+}
+
+td.chevron {
+  width: 2%;
+}
+
+a.chevron {
+  width: 50px;
+  cursor: pointer;
 }
 

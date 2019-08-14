@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Angular-Data-Grid-Input-Form": {
+    "Angular8-Data-Table-Input-Form": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/Angular-Data-Grid-Input-Form",
+            "outputPath": "dist/Angular8-Data-Table-Input-Form",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -29,7 +29,8 @@
             ],
             "styles": [
               "src/styles.scss",
-              "node_modules/bootstrap/dist/css/bootstrap.css"
+              "node_modules/bootstrap/dist/css/bootstrap.css",
+              "node_modules/font-awesome/css/font-awesome.css"
             ],
             "scripts": []
           },
@@ -63,18 +64,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "Angular-Data-Grid-Input-Form:build"
+            "browserTarget": "Angular8-Data-Table-Input-Form:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "Angular-Data-Grid-Input-Form:build:production"
+              "browserTarget": "Angular8-Data-Table-Input-Form:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Angular-Data-Grid-Input-Form:build"
+            "browserTarget": "Angular8-Data-Table-Input-Form:build"
           }
         },
         "test": {
@@ -111,15 +112,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "Angular-Data-Grid-Input-Form:serve"
+            "devServerTarget": "Angular8-Data-Table-Input-Form:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "Angular-Data-Grid-Input-Form:serve:production"
+              "devServerTarget": "Angular8-Data-Table-Input-Form:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "Angular-Data-Grid-Input-Form"
+  "defaultProject": "Angular8-Data-Table-Input-Form"
 }

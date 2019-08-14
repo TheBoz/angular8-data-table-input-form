@@ -22,18 +22,13 @@
             <li>Dirty Row Highlighting</li>
           </ul>
         </div>
-        <div class="col-md-3"></div>
+        <div class="col-md-3">
+          <ul>
+            <li>Extra Toggle Display Section</li>
+          </ul>
+        </div>
         <div class="col-md-3"></div>
       </div>
-    </div>
-
-    <div class="widget-controls">
-      <a data-widgster="expand" href="#" class="transition">
-        <i class="fa fa-chevron-down"></i>
-      </a>
-      <a data-widgster="collapse" href="#" class="transition">
-        <i class="fa fa-chevron-up"></i>
-      </a>
     </div>
 
   </div>
@@ -45,6 +40,7 @@
       <table class="table table-bordered">
         <thead>
           <tr>
+            <th></th>
             <th class="index">     
               <a href="#" (click)="sortBy('index')">
                 Index
@@ -74,16 +70,28 @@
               'clean' : !checkRowIsDirty(employee),
               'dirty' : checkRowIsDirty(employee)
             }">
+
+              <!-- Chevron for expand/shrink -->
+              <td>
+                <!-- <a (click)="toggleContent($event, employee)" > </a>class="chevron"> -->
+                <a (click)="toggleContent($event, employee)">
+                  <i *ngIf="!employee.HideShowToggle" class="fa fa-angle-down"></i>
+                  <i *ngIf="employee.HideShowToggle" class="fa fa-angle-up"></i>
+                </a>
+              </td>
+
               <td class="index">
                 <div>
                   {{ employee.Index }}
                 </div>
               </td>
+
               <td class="name">
                 <div>
                   <input type="text" id="name" formControlName="name" class="form-control">
                 </div>
               </td>
+
               <td class="gender">
                 <div>
                   <select formControlName="gender" class="form-control">
@@ -92,14 +100,21 @@
                   </select>
                 </div>
               </td>
+
               <td class="company">
                 <div>
                   <input type="text" id="name" formControlName="company" class="form-control">
                 </div>
               </td>
 
-
             </tr>
+              
+            <!-- Row for Expanded Reviewer Info -->
+            <tr [hidden]="!employee.HideShowToggle">
+              <td colspan="5">Additional Info Can be displayed here</td>
+            </tr>
+
+
           </ng-container>
         </tbody>
       </table>
@@ -145,6 +160,7 @@
                   {{ employee.company }}
                 </td>                    
               </tr>
+
             </ng-container>
         </tbody>
       </table>
