@@ -3,7 +3,8 @@
 
   <div class="card-header">
 
-    <span class="text-uppercase">ADVANCED DATA TABLE INPUT FORM</span>
+    <span class="text-center text-uppercase"><h2>ADVANCED DATA TABLE INPUT FORM</h2></span>
+    
     <div>
       <span class="text-primary">Features Include:</span>
       <div class="row">
@@ -16,8 +17,9 @@
         </div>
         <div class="col-md-3">
           <ul>
-            <li>Custom Sorting Function</li>
+            <li>Custom Header Sorting Function</li>
             <li>Intelligent Collection of Changes</li>
+            <li>Dirty Row Highlighting</li>
           </ul>
         </div>
         <div class="col-md-3"></div>
@@ -68,7 +70,10 @@
 
         <tbody formArrayName="employees">
           <ng-container *ngFor="let employee of rows; let $index=index; trackBy: trackByFn" [formGroupName]="employee.Index">
-            <tr>
+            <tr [ngClass]="{
+              'clean' : !checkRowIsDirty(employee),
+              'dirty' : checkRowIsDirty(employee)
+            }">
               <td class="index">
                 <div>
                   {{ employee.Index }}

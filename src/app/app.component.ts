@@ -154,5 +154,16 @@ export class AppComponent implements OnInit {
   }
 
 
+  checkRowIsDirty(row: FormRow) {
+    let isDirty = false;
+
+    const formArray: FormArray = this.form.controls.employees as FormArray;
+    if (formArray.controls[row.Index].dirty) {
+      isDirty = true;
+    }
+
+    return isDirty;
+  }
+
 
 }
