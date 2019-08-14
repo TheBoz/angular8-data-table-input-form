@@ -1,0 +1,92 @@
+<div widget class="card">
+
+  <div class="card-header">
+
+    <span class="text-uppercase">ADVANCED FORM ARRAY EDIT FORM</span>
+    <div class="widget-controls">
+      <a data-widgster="expand" href="#" class="transition">
+        <i class="fa fa-chevron-down"></i>
+      </a>
+      <a data-widgster="collapse" href="#" class="transition">
+        <i class="fa fa-chevron-up"></i>
+      </a>
+    </div>
+
+  </div>
+
+  <div class="card-body widget-body">
+
+    <form [formGroup]="form">
+
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th class="index">     
+              <a href="#" (click)="sortBy('index')">
+                Index
+              </a>
+            </th>
+            <th class="name">
+              <a href="#" (click)="sortBy('name')">
+                Name
+              </a>
+            </th>
+            <th class="gender">
+              <a href="#" (click)="sortBy('gender')">
+                Gender
+              </a>
+            </th>
+            <th class="company">
+              <a href="#" (click)="sortBy('company')">
+                Company
+              </a>
+            </th>
+          </tr>
+        </thead>
+
+        <tbody formArrayName="employees">
+          <ng-container *ngFor="let employee of rows; let $index=index; trackBy: trackByFn" [formGroupName]="employee.Index">
+            <tr>
+              <td class="index">
+                <div>
+                  {{ employee.Index }}
+                </div>
+              </td>
+              <td class="name">
+                <div>
+                  <input type="text" id="name" formControlName="name" class="form-control">
+                </div>
+              </td>
+              <td class="gender">
+                <div>
+                  <select formControlName="gender" class="form-control">
+                    <option value="male">male</option>
+                    <option value="female">female</option>
+                  </select>
+                </div>
+              </td>
+              <td class="company">
+                <div>
+                  <input type="text" id="name" formControlName="company" class="form-control">
+                </div>
+              </td>
+
+
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+
+      <!-- Buttons -->
+      <div class="pull-right top-20">
+        <div class="form-row">
+          <button class="btn btn-warning" type="button" (click)="resetChanges()" [disabled]="!form.dirty">Reset Changes</button>
+          <button class="btn btn-primary" type="button" (click)="saveChanges()" [disabled]="!form.dirty">Save Changes</button>
+        </div>
+      </div>
+
+    </form>
+
+  </div>
+
+</div>
