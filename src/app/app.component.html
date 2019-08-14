@@ -111,4 +111,39 @@
 
   </div>
 
+  <!-- Display intelligent change collection -->
+  <div widget class="card" *ngIf="changeCollection.length > 0" >
+  
+    <div class="card-header">
+      <span class="text-uppercase">CHANGE COLLECTION DISPLAYED BELOW</span>
+    </div>
+
+    <div class="card-body widget-body">
+      <table class="table table-bordered">
+        <tbody>
+            <ng-container *ngFor="let employee of changeCollection;">
+              <tr>
+                <td class="index">
+                  <div>
+                    {{ employee.Index }}
+                  </div>
+                </td>
+                <td class="name">
+                  <div>
+                    {{ employee.name }}
+                  </div>
+                </td>
+                <td class="gender">
+                  {{ employee.gender }}
+                </td>
+                <td class="company">
+                  {{ employee.company }}
+                </td>                    
+              </tr>
+            </ng-container>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
 </div>

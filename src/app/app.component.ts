@@ -4,6 +4,7 @@ import { FormGroup, FormArray, FormBuilder } from '@angular/forms';
 
 import { Company } from './models/company';
 
+// Extend Class so I can add a few properties
 class FormRow extends Company {
   // Store the Index of the array element for better performance in FormArray Handling
   public Index = 0;
@@ -19,6 +20,7 @@ class FormRow extends Company {
 export class AppComponent implements OnInit {
   public rows: FormRow[] = [];
   public form: FormGroup;
+  public changeCollection: FormRow[] = [];
 
   constructor(
     private backEndService: BackEndService,
@@ -84,7 +86,7 @@ export class AppComponent implements OnInit {
     console.log('save form changes...');
 
     // Cycle thru each formArray row and only save the rows that have been updated
-    const changeCollection: FormRow[] = [];
+    this.changeCollection = [];
 
     if (this.form.controls.employees.pristine === false) {
 
@@ -94,16 +96,16 @@ export class AppComponent implements OnInit {
           // changeCollection.push(formArray.value[i]);
           const obj: FormRow = new FormRow();
           Object.assign(obj, formArray.value[i]);
-          changeCollection.push(obj);
+          this.changeCollection.push(obj);
         }
       }
     }
 
-    if (changeCollection.length > 0) {
-      console.log('ChangeCollection: ', changeCollection);
+    if (this.changeCollection.length > 0) {
+      console.log('ChangeCollection: ', this.changeCollection);
 
       // Make updates to rows collection so I can rebuild the form
-      changeCollection.forEach((item) => {
+      this.changeCollection.forEach((item) => {
         const row = this.rows.find(x => x.Index === item.Index);
         if (row) {
           row.name = item.name;
